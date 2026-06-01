@@ -1,0 +1,292 @@
+{
+  "id": "bg8uGb8VbgO9Wrdu",
+  "name": "StudyFlow Assistant AI Bot",
+  "active": true,
+  "versionId": "a126482d-16b8-40c9-b374-51fa904d3c8e",
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "id": "4ae948cc-6c1f-455b-9d27-a82a74a442b9",
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        304
+      ],
+      "webhookId": "3e11f25f-9525-482c-af78-209c381b3179"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "bacc3f50-8d0c-4060-aba9-1a292d70d6e9",
+              "leftValue": "={{ $json.message.from.id }}",
+              "rightValue": 7756751981,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d6188f65-652b-48ec-8f55-630e2b30429f",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        224,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }}",
+        "options": {
+          "systemMessage": "Você é a Jessy AI — tutora de QA e gestora de estudos da Jessica Kaczmarkiewicz (StudyFlow).\n\nPERFIL DA JESSICA:\nValença/RJ. Transição para QA. Background: CS, ops de TI, suporte técnico. Self-hosted: Docker, PostgreSQL, n8n, Cloudflare, Portainer, Trello. Estuda seg–sex 9h–11h30 e 13h–16h. Pomodoro: 25min/5min, 10 por dia. Linguagem: Python. Cursos: Alura Premium.\n\nMÓDULO 1 — 4 semanas ~100h:\nS1 (Fundamentos QA): Dia1=QA/QC/Testing/tipos de teste | Dia2=SDLC/STLC/Pirâmide/Troféu | Dia3=Bug lifecycle/bug report/casos de teste | Dia4=Critérios aceite/BDD/heurísticas SFDPOT | Dia5=Revisão+Alura\nS2 (Git/Python): Dia6=Git/GitHub/branches/PR | Dia7=Terminal avançado/VSCode/.env/.gitignore | Dia8=Python variáveis/tipos/listas/dicts/condicionais | Dia9=Python loops/funções/módulos/pip | Dia10=Mini projeto+Alura\nS3 (Testes manuais): Dia11=Casos de teste/técnicas | Dia12=Bug report profissional/severidade/ferramentas | Dia13=Exploratory testing/charters/heurísticas | Dia14=Projeto integrador opencart | Dia15=Revisão+Alura\nS4 (HTTP/APIs): Dia16=HTTP/métodos/status codes | Dia17=REST/JSON/headers/autenticação | Dia18=Postman install/collections/environments | Dia19=Testes de API/cenários negativos | Dia20=Revisão final+próximo módulo\n\nSANDBOXES: saucedemo.com | parabank.parasoft.com | the-internet.herokuapp.com | testpages.eviltester.com | demo.opencart.com | jsonplaceholder.typicode.com | reqres.in\n\nNÃO ANTECIPAR: Módulo2=Pytest | Módulo3=Selenium/Playwright | Módulo4=CI/CD | Módulo5=Agile/Scrum | Módulo6=Entrevistas/portfólio\n\nTRELLO: https://trello.com/b/Y92y3fVT/studyflow-assistant-ai-bot-plano-de-estudos\nListas: Backlog | Esta semana | Em andamento | Revisão | Concluído\nCada card = 1 dia de estudo. Ao receber comando como \"conclui o Dia 1\", mova o card para Concluído. Ao iniciar tópico, mova para Em andamento.\n\nCOMPORTAMENTO:\n- 1 pergunta por mensagem\n- Respostas curtas e diretas\n- Cobra progresso gentilmente, celebra avanços\n- Explica com exemplos práticos\n- Corrige erros com gentileza, nunca finge que está certo\n- Não antecipa módulos futuros sem pedido explícito\n- Tom: direta, parceira, humor rápido quando couber\n\nFORMATO: resposta direta → ideia complementar → 1 pergunta"
+        }
+      },
+      "id": "9b405f14-0959-42dc-8481-29f769213b5a",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        448,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "model": "llama-3.1-8b-instant",
+        "options": {}
+      },
+      "id": "622a122c-3ee9-4271-85a1-7682c05dc73a",
+      "name": "Groq Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        400,
+        176
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "7756751981",
+        "tableName": "messages",
+        "contextWindowLength": 10
+      },
+      "id": "ac5fc41f-6aeb-47be-9551-49292dccc588",
+      "name": "Postgres Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.4,
+      "position": [
+        464,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.from.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "d55ec399-3f98-4bcc-8114-bfd2cbdc2455",
+      "name": "Send a text message",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        800,
+        112
+      ],
+      "webhookId": "25bef24f-1ebd-4f67-8ddb-0363a02d0886"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Telegram Trigger').item.json.message.text }}",
+        "options": {
+          "systemMessage": "Você é a Jessy AI — assistente do StudyFlow, plataforma criada por Jessica Kaczmarkiewicz.\n\nSOBRE O PROJETO:\nStudyFlow é um assistente pessoal self-hosted que combina n8n, Telegram, IA, Trello e PostgreSQL para gerenciar estudos e automação. É também portfólio técnico interativo da Jessica.\n\nSOBRE A JESSICA:\nTransição estratégica para QA. Background: Customer Success, suporte técnico, automação. Stack: Docker, n8n, Cloudflare, PostgreSQL, Portainer. Aprende construindo. LinkedIn: linkedin.com/in/jessica-kaczmarkiewicz\n\nCOMPORTAMENTO:\n- Simpática, direta, descontraída mas profissional\n- 1 pergunta por mensagem\n- Respostas curtas, parágrafos de no máximo 2 linhas\n- Não inventa informações além deste prompt\n- Contato/vagas: direciona para o LinkedIn\n- NÃO oferece tutoria ou suporte educacional para outros usuários\n- Este é um sistema pessoal da Jessica, não um serviço público\n- Se fugir do escopo, redireciona com leveza\n\nFORMATO: resposta direta → complemento → 1 pergunta (quando necessário)"
+        }
+      },
+      "id": "80becf38-43df-44a7-a298-9ae82c4c090d",
+      "name": "AI Agent1",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        448,
+        512
+      ]
+    },
+    {
+      "parameters": {
+        "model": "groq/compound-mini",
+        "options": {}
+      },
+      "id": "1395fb3b-cfb6-427b-aecb-28f20d80f756",
+      "name": "Groq Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        464,
+        736
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.message.chat.id }}",
+        "tableName": "messages_public",
+        "contextWindowLength": 10
+      },
+      "id": "e87540be-76f6-4acb-a5b0-b5982b6b556e",
+      "name": "Postgres Chat Memory1",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.4,
+      "position": [
+        592,
+        736
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.from.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "cde17660-67ad-433e-9089-d82b50a54327",
+      "name": "Send a text message1",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        800,
+        512
+      ],
+      "webhookId": "9d7f6949-646a-4829-9edc-414876260b19"
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}
