@@ -69,7 +69,7 @@ Histórico de desenvolvimento do StudyFlow.
 - Infraestrutura Docker: n8n + PostgreSQL 16 + Portainer CE
 - Cloudflare Tunnel (studyflow.jessicakacz.com.br)
 - Cloudflare Worker proxy para contornar bloqueio ISP do Telegram
-- Repositório GitHub criado (JessKacz/studyflow)
+- Repositório GitHub criado (JessKacz/studyflow-ai-bot)
 
 ### Problemas encontrados e resolvidos
 - ISP bloqueando api.telegram.org → Cloudflare Worker
