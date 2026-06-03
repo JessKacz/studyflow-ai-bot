@@ -13,7 +13,7 @@
 ## 1. Clonar o repositório
 
 ```bash
-git clone https://github.com/JessKacz/studyflow.git
+git clone https://github.com/JessKacz/studyflow-ai-bot.git
 cd studyflow
 ```
 
