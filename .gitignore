@@ -1,0 +1,43 @@
+# ── Dados dos containers (NUNCA commitar) ──
+n8n_data/
+postgres_data/
+portainer_data/
+
+# ── Variáveis de ambiente com segredos ──
+.env
+*.env
+!.env.example
+
+# ── Node.js ──
+node_modules/
+npm-debug.log*
+
+# ── Logs ──
+*.log
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Scripts de uso local/temporário ──
+# (os scripts de provisionamento Trello ficam em scripts/trello/)
+check_*.js
+fix_*.js
+gh_*.js
+fetch_*.js
+read_*.js
+set_webhook*.js
+test_*.js
+verify_*.js
+get_trello*.js
+trello_reorganize.js
+github_backup*.js
+github_create*.js
+github_fix*.js
+github_readme*.js
+github_setup*.js
+github_test*.js
+github_update*.js
+trello_s2_base.js
+trello_semana*.js
